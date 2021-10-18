@@ -1,0 +1,51 @@
+@import "../../layout/variables";
+@import "../../layout/mixins";
+
+
+.special-modal{
+  .paper{
+    .modal-body {
+      padding: $px-24 $px-60;
+      color: rgba(0, 0, 0, 0.6);
+  
+      p{
+        line-height: 1.6;
+        margin: 8px 0;
+      }
+  
+      .code{
+        color: $avocado-green;
+        font-weight: 400;
+        letter-spacing: 1px;
+        font-size: 20px;
+      }
+  
+      .MuiButton-root{
+        font-weight: 400;
+        font-size: 17px;
+        margin-top: 6px;
+      }
+    }
+  }
+  
+
+  @media (max-width: 600px) {
+    .paper{
+      .modal-body {
+        padding: $px-24;
+
+        p{
+          font-size: 14px;
+        }
+
+        .code{
+          font-size: 18px;
+        }
+
+        .MuiButton-root{
+          font-size: 15px;
+        }
+      }
+    }
+  }
+}

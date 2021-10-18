@@ -1,0 +1,95 @@
+// FONT
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;0,900;1,300;1,400;1,500;1,700;1,900&display=swap");
+// LAYOUT
+@import "./variables";
+@import "./mixins";
+// GLOBAL
+html {
+  font-family: $roboto;
+  font-size: 16px;
+}
+
+body {
+  background-color: $white;
+  min-width: 320px;
+  overflow-x: hidden;
+  max-width: 100%;
+  margin: 0;
+  font-family: $roboto;
+  font-size: 16px;
+  font-weight: 400;
+  caret-color: transparent;
+  @media (max-width: 320px) {
+    overflow-x: auto;
+  }
+}
+
+input {
+  caret-color: $black;
+}
+
+.img-fluid {
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  text-decoration: none;
+  color: $dark-purple;
+}
+
+.main-area {
+  padding: 64px 24px;
+}
+
+.page-container {
+  padding-top: 24px;
+}
+
+.max-container {
+  max-width: 1920px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.empty {
+  text-align: center;
+  +.delete-container {
+    text-align: center;
+  }
+}
+
+.error-message.MuiAlert-root{
+  border: none;
+  justify-content: center;
+
+  .MuiAlert-message{
+    color: $red;
+    font-weight: 300;
+  }
+}
+
+.MuiFormLabel-root.Mui-error{
+  color: $red;
+  font-weight: 300;
+}
+
+// LAZY LOADING
+.lazy-load {
+  height: 100vh;
+  background: $white;
+  top: 0;
+  left: auto;
+  right: 0;
+  position: fixed;
+  z-index: 99999;
+  width: 100%;
+  img {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+  }
+}

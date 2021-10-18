@@ -1,0 +1,268 @@
+@import "../../layout/variables";
+@import "../../layout/mixins";
+
+.recipe-details-page{
+  .card-block{
+    .card-image{
+      padding: 16px;
+      padding-bottom: 0;
+    }
+    .card-content{
+      padding-top: 8px;
+
+      .title{
+        font-size: 34px;
+        margin-bottom: 4px;
+      }
+
+      .other-details{
+        label{
+          font-size: 14px;
+          margin-top: 4px;
+          color: rgba(0, 0, 0, 0.5);
+          font-style: italic;
+        }
+        img{
+          max-width: 60px;
+        }
+        span{
+          font-size: $px-18;
+        }
+      }
+    }
+
+    &.switch{
+      .card-image{
+        padding-bottom: 10px;
+        padding-top: 10px;
+      }
+      .card-content{
+        padding-top: 16px;
+        padding-bottom: 0;
+        text-align: center;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .card-content{
+        .title{
+          font-size: 24px;
+        }
+        .description{
+          font-size: $px-16;
+        }
+  
+        .other-details{
+          label{
+            font-size: 12px;
+          }
+          img{
+            max-width: 40px;
+          }
+          span{
+            font-size: $px-16;
+          }
+        }
+      }
+    }
+
+    @media (max-width: 420px) {
+      .card-image{
+        .dates{
+          p{
+            display: flex;
+          }
+          .edited{
+            margin-left: 0;
+          }
+        }
+      }
+    }
+
+    @media (max-width: 375px) {
+      .card-image{
+        .dates{
+          font-size: 10px;
+        }
+      }
+      
+      .card-content{
+        .title{
+          font-size: 22px;
+        }
+        .description{
+          font-size: $px-14;
+        }
+  
+        .other-details{
+          label{
+            font-size: 10px;
+            height: 28px;
+          }
+          img{
+            max-width: 30px;
+          }
+          span{
+            font-size: $px-14;
+            margin-top: 2px;
+          }
+        }
+      }
+    }
+  }
+  
+  .full-details{
+    padding: 16px;
+    color: rgba(0,0, 0, .6);
+
+    h3{
+      font-weight: 500;
+      font-size: 22px;
+      margin: 0;
+      color: $dark-purple;
+      margin-bottom: 2px;
+    }
+
+    .note{
+      font-size: 16px;
+      font-style: italic;
+      margin: 0;
+      color: rgba(0, 0, 0, 0.5);
+      text-indent: 14px;
+    }
+
+    .ingredients-area{
+      margin-bottom: 40px;
+
+      .btn-special{
+        padding: 6px;
+        color: rgba(0, 0, 0, 0.6);
+        font-size: 16px;
+        font-weight: 400;
+        text-align: left;
+        width: 100%;
+
+        .MuiButton-label{
+          justify-content: flex-start;
+        }
+
+        svg{
+          fill: #fcc201;
+          display: inline-block;
+          margin-right: 6px;
+        }
+      }
+
+      .table{
+        margin-top: 16px;
+        border-collapse: collapse;
+        width: 100%;
+
+        th{
+          font-weight: 500;
+        }
+  
+        td, th {
+          border: 1px solid $avocado-green;
+          text-align: left;
+          padding: 8px;
+          vertical-align: middle;
+        }
+        
+        tr:nth-child(even) {
+          background-color: lighten($avocado-green, 20%);
+        }
+      }
+    }
+
+    .directions-area{
+      ul{
+        list-style: none;
+        margin-top: 16px;
+        margin-bottom: 0;
+      }
+
+      ul li{
+        font-size: 18px;
+        margin-bottom: 8px;
+        &.optional:before{
+          color: $red;
+        }
+        &:before {
+          // content: "\2605";
+          content: "\26AC";
+          color: $avocado-green;
+          font-weight: bold;
+          display: inline-block; 
+          width: 1.8rem;
+          margin-left: -1.8rem;
+        }
+      }
+    }
+
+    @media (max-width: 600px) {
+      h3{
+        font-size: 18px;
+      }
+      .note{
+        font-size: 14px;
+      }
+      .ingredients-area{
+        .table{
+          font-size: 14px;
+          .btn-special{
+            font-size: 14px;
+          }
+        }
+      }
+      .directions-area{
+        ul li{
+          font-size: 15px;
+        }
+      }
+    }
+    @media (max-width: 375px) {
+      h3{
+        font-size: 16px;
+      }
+      .note{
+        font-size: 12px;
+      }
+      .ingredients-area{
+        .table{
+          font-size: 12px;
+          .btn-special{
+            font-size: 12px;
+          }
+        }
+      }
+      .directions-area{
+        ul li{
+          font-size: 13px;
+          &:before {
+            width: 1.4rem;
+            margin-left: -1.4rem;
+          }
+        }
+      }
+    }
+  }
+  
+  .delete-container{
+    margin-top: 24px;
+    text-align: right;
+    
+    button{
+
+    color: rgba(0, 0, 0, 0.7);
+      padding: 12px 20px;
+      font-weight: 400;
+      font-size: 18px;
+
+      svg{
+        margin-right: 4px;
+      }
+    }
+  }
+  
+}

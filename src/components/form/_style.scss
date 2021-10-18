@@ -1,0 +1,17 @@
+@import "../../layout/variables";
+@import "../../layout/mixins";
+
+
+.form-control{
+  .MuiOutlinedInput-input{
+    padding: 12px 16px;
+    font-size: 14px;
+    font-weight: 300;
+  }
+  .MuiInputLabel-outlined {
+    transform: translate(16px, 14px) scale(.9);
+    &.MuiInputLabel-shrink{
+      transform: translate(16px, -4px) scale(0.6);
+    }
+  }
+}

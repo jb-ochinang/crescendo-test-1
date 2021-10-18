@@ -1,0 +1,224 @@
+@import "../../layout/variables";
+@import "../../layout/mixins";
+
+
+.add-modal,
+.edit-modal{
+  .paper-wrapper {
+    min-height: 1000px;
+  }
+
+  .paper{
+    width: 750px;
+    .modal-body {
+      padding: $px-24 $px-30;
+      color: rgba(0, 0, 0, 0.6);
+  
+      p{
+        line-height: 1.6;
+        margin: 8px 0;
+      }
+  
+      .code{
+        color: $avocado-green;
+        font-weight: 400;
+        letter-spacing: 1px;
+        font-size: 20px;
+      }
+  
+      .MuiButton-root{
+        font-weight: 400;
+        font-size: 17px;
+        margin-top: 6px;
+      }
+
+      .form-control{
+        width: 100%;
+        margin-bottom: $px-16;
+      }
+      .group-label{
+        font-size: 17px;
+        color: $dark-purple;
+        margin: 0;
+        text-align: left;
+      }
+
+      .time-inputs{
+        margin-top: 5px;
+        display: flex;
+        align-items: center;
+        .form-control + .form-control{
+          margin-left: 20px;
+        }
+      }
+
+      .directions-inputs,
+      .ingredients-inputs{
+        max-height: 190px;
+        overflow-y: auto;
+        background: rgba(0,0,0, .04);
+        padding: 10px;
+        border-radius: 10px;
+        margin-bottom: 14px;
+        margin-top: 5px;
+        .box{
+          margin-bottom: 10px;
+          &:last-child{
+            margin-bottom: 0;
+          }
+        }
+        .repeat{
+          align-items: center;
+          display: flex;
+        }
+
+        .MuiFormGroup-root{
+          margin-left: 20px
+        }
+
+        .form-control + .form-control{
+          margin-left: 10px;
+        }
+
+        .form-control{
+          margin-bottom: 0;
+          .MuiInputBase-input{
+            background: $white;
+          }
+        }
+
+        .MuiFormControlLabel-label{
+          font-size: 15px;
+        }
+
+        .remove-btn-container{
+          margin-left: 10px;
+        }
+
+        .btn-remove{
+          border: 1px solid $dark-purple;
+          padding: 0;
+        }
+
+        .btn-add{
+          border: 1px solid $avocado-green;
+          padding: 0;
+          margin-top: 10px;
+        }
+      }
+
+      .action-group{
+        margin-top: 20px;
+        margin-bottom: 10px;
+        button{
+          min-width: 120px;
+        }
+        button + button{
+          margin-left: 20px;
+        }
+
+        .btn-submit{
+          text-transform: none;
+          font-weight: 400;
+          position: relative;
+      
+          .text{
+            position: relative;
+            right: 0;
+            transition: right .4s ease-in-out;
+          }
+      
+          &.Mui-disabled .text{
+            right: 12px;
+          }
+          
+          .loader{
+            position: relative;
+            top: 1px;
+            right: 5px;
+          }
+      
+          &.MuiButton-contained.Mui-disabled{
+            color: rgba($white, 0.8);
+            background-color: lighten($black, 72%)
+          }
+        }
+      }
+    }
+  }
+
+  @media (max-width: 767px) {
+    .paper-wrapper {
+      min-height: 1150px;
+    }
+    .paper{
+      width: 90%;
+      margin: 0 auto;
+
+      .modal-body {
+        .time-inputs{
+          flex-direction: column;
+          .form-control + .form-control{
+            margin-left: 0;
+          }
+        }
+
+        .directions-inputs,
+        .ingredients-inputs{
+          max-height: 250px;
+
+          .repeat{
+            flex-direction: column;
+          }
+          .form-control{
+            margin-bottom: 4px;
+          }
+          .form-control + .form-control{
+            margin-left: 0;
+          }
+          .remove-btn-container{
+            margin-left: 0;
+          }
+        }
+      }
+    }
+  }
+  
+
+  @media (max-width: 600px) {
+    .paper{
+      .modal-body {
+        padding: $px-24 $px-30;
+
+        p{
+          font-size: 14px;
+        }
+
+        .code{
+          font-size: 18px;
+        }
+
+        .MuiButton-root{
+          font-size: 15px;
+        }
+
+        .action-group{
+          button{
+            min-width: 100px;
+          }
+        }
+      }
+    }
+  }
+  @media (max-width: 400px) {
+    .paper{
+      .modal-body {
+        padding: $px-18 $px-20;
+
+        .form-control{
+          margin-bottom: 12px;
+        }
+      }
+    }
+  }
+}

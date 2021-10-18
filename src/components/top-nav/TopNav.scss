@@ -1,0 +1,57 @@
+@import "../../layout/variables";
+@import "../../layout/mixins";
+
+.nav-area{
+  header{
+    background-color: $white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .18);
+  }
+  .logo{
+    display: inline-flex;
+    align-items: center;
+    padding: 10px 0;
+    img{
+      width: 46px;
+      position: relative;
+      bottom: 2px;
+    }
+    span{
+      font-weight: 500;
+      font-size: 26px;
+      display: inline-block;
+      margin-left: 8px;
+      font-style: italic;
+    }
+  }
+  .right{
+    margin-left: auto;
+
+    button{
+      svg{
+        fill: $dark-purple;
+      }
+    }
+  }
+
+  @media (max-width: 425px) {
+    .logo{
+      padding: 10px 0;
+      img{
+        width: 36px;
+        bottom: 2px;
+      }
+      span{
+        font-size: 20px;
+        margin-left: 8px;
+      }
+    }
+    .right{
+      button{
+        padding: 6px;
+        svg{
+          fill: $dark-purple;
+        }
+      }
+    }
+  }
+}

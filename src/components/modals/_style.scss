@@ -1,0 +1,101 @@
+@import "../../layout/variables";
+@import "../../layout/mixins";
+
+
+.common-modal{
+  overflow: auto;
+  position: relative;
+
+  .paper-wrapper {
+    height: 100%;
+    min-height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    pointer-events: none;
+  }
+
+  .paper {
+    pointer-events: auto;
+    background-color: $white;
+    border-radius: $px-10;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+    width: 500px;
+    text-align: center;
+    box-sizing: border-box;
+
+    .modal-header {
+      padding: $px-20;
+      border-bottom: 1px solid lighten($black, 80%);
+      position: relative;
+
+      h2 {
+        margin: 0;
+        font-size: $px-20;
+        color: $dark-purple;
+        font-weight: 500;
+      }
+
+      .close-btn {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        right: 10px;
+        svg {
+          width: $px-24;
+          height: $px-24;
+          fill: rgba(0, 0, 0, 0.3);
+        }
+      }
+    }
+
+    .modal-body {
+      padding: $px-24 $px-60;
+      color: rgba(0, 0, 0, 0.6);
+
+      p{
+        line-height: 1.6;
+        margin: 8px 0;
+      }
+
+      .code{
+        color: $avocado-green;
+        font-weight: 400;
+        letter-spacing: 1px;
+        font-size: 20px;
+      }
+
+      .MuiButton-root{
+        font-weight: 400;
+        font-size: 17px;
+      }
+    }
+  }
+
+  .MuiBackdrop-root {
+    background-color: rgba(0, 0, 0, 0.7);
+  }
+
+  @media (max-width: 600px) {
+    .paper{
+      width: 90%;
+      margin: 0 auto;
+
+      .modal-header {
+        padding: $px-18;
+  
+        h2 {
+          font-size: $px-18;
+        }
+
+        .close-btn {
+          svg {
+            width: $px-20;
+            height: $px-20;
+          }
+        }
+      }
+    }
+  }
+}

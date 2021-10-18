@@ -1,12 +1,28 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
+import App from './layout/App';
+import { BrowserRouter as Router } from 'react-router-dom';
+import ScopedCssBaseline from '@material-ui/core/ScopedCssBaseline';
+import { ThemeProvider } from '@material-ui/core/styles';
+import theme from './layout/theme';
+import SearchProvider from './context/SearchContext';
+import RecipeProvider from './context/RecipeContext';
 import reportWebVitals from './reportWebVitals';
+import './layout/App.scss';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <ThemeProvider theme={theme}>
+      <ScopedCssBaseline className="baseline">
+        <Router>
+          <RecipeProvider>
+            <SearchProvider>
+              <App />
+            </SearchProvider>
+          </RecipeProvider>
+        </Router>
+      </ScopedCssBaseline>
+    </ThemeProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );

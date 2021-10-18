@@ -1,0 +1,174 @@
+@import "../../layout/variables";
+@import "../../layout/mixins";
+
+.card-block{
+  height: 100%;
+  position: relative;
+  &.MuiCard-root{
+    box-shadow: 0 0 16px rgba(0, 0, 0, .12);
+  }
+
+  .card-image{
+    overflow: hidden;
+    position: relative;
+    height: auto;
+    min-height: auto;
+
+    img{
+      position: relative;
+      top: auto;
+      left: auto;
+      transform: none;
+      width: 100%;
+    }
+
+    .dates{
+      font-size: 12px;
+      margin-top: 6px;
+      p{
+        display: inline-flex;
+        align-items: center;
+        margin: 0;
+        color: rgba(0, 0, 0, .5);
+        font-style: italic;
+      }
+
+      svg{
+        width: 16px;
+        height: 16px;
+        fill: rgba(0, 0, 0, .5)
+      }
+
+      span{
+        display: inline-block;
+        margin-left: 4px
+      }
+
+      .edited{
+        margin-left: 20px;
+      }
+    }
+  }
+
+  .card-content{
+    color: rgba($black, 0.6);
+    &:last-child{
+      padding: 16px;
+    }
+
+    .title{
+      font-size: $px-22;
+      font-weight: 500;
+      color: $dark-purple;
+    }
+    .description{
+      margin-top: 0;
+      margin-bottom: $px-18;
+      font-size: $px-18;
+    }
+
+    .other-details{
+      .MuiBox-root{
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+      }
+      label{
+        font-size: 12px;
+      }
+      img{
+        max-width: 40px;
+      }
+      span{
+        display: block;
+        margin-top: 10px;
+        font-weight: 500;
+      }
+    }
+  }
+
+  &.all-recipe{
+    &.MuiCard-root{
+      transition: box-shadow 0.2s ease-in-out, backgroun-color 0.2s ease-in-out;
+  
+      &:hover{
+        box-shadow: 0 0 6px rgba(0, 0, 0, .12);
+        background-color: darken($white, 2%);
+      }
+    }
+
+    .card-image{
+      @media (min-width: 1600px) {
+        height: auto;
+        min-height: 290px;
+        img{
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+        }
+      }
+  
+      @media (max-width: 1600px) and (min-width: 600px) {
+        height: 20vw;
+        min-height: 340px;
+        img{
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          width: auto;
+        }
+      }
+    }
+
+    .card-content{
+      @media (max-width: 1420px) and (min-width: 1280px) {
+        .description{
+          @include ellipsis;
+        }
+      }
+  
+      @media (max-width: 768px) and (min-width: 600px) {
+        .title{
+          font-size: $px-18;
+        }
+        .description{
+          font-size: $px-16;
+          @include ellipsis;
+        }
+        .other-details{
+          label{
+            display: none;
+          }
+        }
+      }
+  
+      @media (max-width: 425px) {
+        .title{
+          font-size: $px-16;
+        }
+        .description{
+          font-size: $px-14;
+        }
+  
+        .other-details{
+          img{
+            max-width: 30px;
+          }
+        }
+      }
+  
+      @media (max-width: 375px) {
+        .other-details{
+          label{
+            display: none;
+          }
+          span{
+            font-size: $px-14;
+          }
+        }
+      }
+    }
+  }
+}

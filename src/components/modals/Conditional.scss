@@ -1,0 +1,36 @@
+@import "../../layout/variables";
+@import "../../layout/mixins";
+
+.conditional-modal {
+  .paper {
+    .modal-body{
+      padding: 40px 20px;
+      .icon {
+        fill: $red;
+        width: 90px;
+      }
+  
+      .title {
+        margin: $px-12 auto;
+        color: rgba(0,0,0,0.7);
+        font-weight: 500;
+      }
+  
+      .desc{
+        margin-bottom: 20px;
+      }
+
+      button{
+        min-width: 100px;
+        + button{
+          margin-left: 20px
+        }
+
+        &.accept-btn{
+          background: lighten($red, 6%);
+        }
+      }
+
+    }
+  }
+}
