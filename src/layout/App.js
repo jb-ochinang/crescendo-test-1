@@ -25,6 +25,7 @@ const App = () => {
       })
       .catch((error) => {
         console.log('error get recipes: ', error)
+        dispatch({ type: 'API_LOADING', payload: false })
       })
   }
 
