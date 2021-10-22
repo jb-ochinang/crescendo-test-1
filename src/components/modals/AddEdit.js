@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import moment from 'moment';
-import { Modal, Backdrop, Zoom, IconButton, Button, Fade } from '@material-ui/core';
+import { Modal, Backdrop, Zoom, IconButton, Button, Fade, FormControl } from '@material-ui/core';
 import { Alert } from '@material-ui/lab';
+import FadedContainer from '../../components/faded-container/FadedContainer';
 import CloseIcon from '@material-ui/icons/Close';
 import IngredientsForm from '../form/IngredientsForm';
 import DirectionsForm from '../form/DirectionsForm';
@@ -11,6 +12,7 @@ import NumberInput from '../form/NumberInput';
 import Loader from '../../components/loader/Loader';
 import axios from 'axios';
 import { BASE_URL } from '../../config/config';
+import { DropzoneArea } from 'material-ui-dropzone';
 import './_style.scss';
 import './AddEdit.scss';
 
@@ -33,6 +35,20 @@ const AddEditModal = ({
   const [values, setValues] = useState(DEFUALT_STATE)
   const [ingredient_values, set_ingredient_values] = useState([{ uuid: uuidv4(), name: '', amount: '', measurement: '' }])
   const [directions_values, set_directions_values] = useState([{ uuid: uuidv4(), instructions: '', optional: false }])
+  // IMAGE
+  const [imageVal, setImageVal] = useState([]);
+  const [initial_image, set_initial_file] = useState([]);
+  const [image_remove, set_image_remove] = useState(false);
+  const [image_loaded, set_image_loaded] = useState(false);
+  const on_image_load = () => {
+    setTimeout(() => {
+      set_image_loaded(true);
+    }, 200)
+  }
+  const onChangeImage = (file) => {
+    remove_errors('avatar')
+    setImageVal(file)
+  }
 
   // LOADER
   const [loading, setLoading] = useState(false);
@@ -68,6 +84,9 @@ const AddEditModal = ({
       setValues(DEFUALT_STATE)
       set_err_message('')
       set_outline_error([])
+      set_initial_file([])
+      set_image_loaded(false)
+      set_image_remove(false)
       set_ingredient_values([{ uuid: uuidv4(), name: '', amount: '', measurement: '' }])
       set_directions_values([{ uuid: uuidv4(), instructions: '', optional: false }])
     }, 400)
@@ -147,6 +166,16 @@ const AddEditModal = ({
     });
   }
 
+  useEffect(() => {
+    if(open){
+      if (isEdit) {
+        set_image_loaded(false)
+      } else {
+        set_image_loaded(true)
+      }
+    }
+  }, [open, data])
+
   return (
     <div>
       <Modal
@@ -196,6 +225,46 @@ const AddEditModal = ({
                     values={values}
                     onChange_num={onChange_num}
                   />
+
+                  <FormControl className="form-control upload-form">
+                    <img src={initial_image} className="d-none" onLoad={on_image_load} alt="no-preview" />
+                    <FadedContainer
+                      loading={!image_loaded}
+                      duration={.2}
+                      delay={.2}
+                      loader={
+                        <Loader appear={true} width="30" thick />
+                      }>
+
+                      <div className="dropzone-wrapper">
+                        <DropzoneArea
+                          maxFileSize={100000000}
+                          initialFiles={initial_image}
+                          dropzoneClass={`drop-image ${outline_error.includes("image") ? 'error' : ''}`}
+                          previewGridClasses={{
+                            container: "priview-container",
+                            item: "priview-item",
+                          }}
+                          filesLimit={1}
+                          acceptedFiles={['image/*']}
+                          dropzoneText={`Drag and drop an image here or click`}
+                          onChange={(file) => onChangeImage(file)}
+                          getFileAddedMessage={() => `Image successfully attached.`}
+                          getDropRejectMessage={(file_data, accepted_file, max_file) => {
+                            if(file_data.size > max_file){
+                              return 'File was rejected. File is too big. Size limit is 100 megabytes.'
+                            } else {
+                              return 'File was rejected. File type not supported.'
+                            }
+                          }}
+                          getFileRemovedMessage={() => {
+                            set_image_remove(true)
+                            return `Image removed.`
+                          }}
+                        />
+                      </div>
+                    </FadedContainer>
+                  </FormControl>
 
                   <p className="group-label">Time</p>
                   <div className="time-inputs">

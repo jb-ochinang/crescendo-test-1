@@ -15,10 +15,10 @@ export default function TopNav() {
               <img src={logo} alt="Recipe Book Icon" />
               <span>Recipe Book</span>
             </Link>
-            <div className="right">
+            {/* <div className="right">
               <IconButton aria-label="call"><Call/></IconButton>
               <IconButton aria-label="facebook"><ShoppingCart/></IconButton>
-            </div>
+            </div> */}
           </Toolbar>
       </AppBar>
     </nav>

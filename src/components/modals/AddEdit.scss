@@ -5,7 +5,7 @@
 .add-modal,
 .edit-modal{
   .paper-wrapper {
-    min-height: 1000px;
+    min-height: 1150px;
   }
 
   .paper{
@@ -52,9 +52,116 @@
         }
       }
 
+      .upload-form{
+        align-items: start;
+        margin-bottom: $px-16;
+        position: relative;
+        padding-bottom: $px-20;
+        border-bottom: 1px solid rgba(0,0,0,0.1);
+
+        .faded-container{
+          min-height: 140px;
+        }
+  
+        .dropzone-wrapper{
+          position: relative;
+          width: 100%;
+  
+          .additional-text{
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 100%;
+            font-size: $px-14;
+            font-weight: 500;
+            padding-top: 62px;
+            margin: 0;
+            pointer-events: none;
+          }
+        }
+  
+        .drop-image{
+          min-height: 140px;
+          position: relative;
+  
+          &.error,
+          &.error:hover{
+            border-color: $red;
+          }
+  
+          &:hover{
+            background-image: none;
+            border-color: rgba(0, 0, 0, 0.87);
+          }
+  
+          .MuiDropzoneArea-textContainer{
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 100%;
+            pointer-events: none;
+  
+            p{
+              font-size: 15px;
+              margin: 0;
+              font-weight: 400;
+            }
+            svg{
+              width: 35px;
+              height: 35px;
+              opacity: 0.5;
+            }
+          }
+  
+          .priview-container{
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            display: block;
+            position: absolute;
+  
+            .priview-item{
+              padding: 0;
+              width: 98%;
+              max-width: none;
+              position: relative;
+              margin: 0 auto;
+              top: 50%;
+              transform: translateY(-50%);
+              background-color: $white;
+  
+              &:hover{
+                img{
+                  opacity: 1;
+                }
+              }
+              
+              img{
+                height: 120px;
+                vertical-align: middle;
+                border-radius: 0;
+                box-shadow: none;
+              }
+              button{
+                opacity: 1;
+                top: auto;
+                right: 12px;
+                bottom: 2px;
+                box-shadow: none;
+  
+                svg{
+                  fill: rgba(0, 0, 0, 0.5);
+                }
+              }
+            }
+          }
+        }
+      }
+
       .directions-inputs,
       .ingredients-inputs{
-        max-height: 190px;
+        max-height: 198px;
+        min-height: 130px;
         overflow-y: auto;
         background: rgba(0,0,0, .04);
         padding: 10px;
@@ -149,7 +256,7 @@
 
   @media (max-width: 767px) {
     .paper-wrapper {
-      min-height: 1150px;
+      min-height: 1300px;
     }
     .paper{
       width: 90%;
